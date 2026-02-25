@@ -13,3 +13,4 @@ Diese App ist das leere Gerüst für die App-Entwicklung im Modul Informatik 2 (
 
 Autor: Samuel Wehrli (wehs@zhaw.ch)
 """
+Laura Gjugja (students.zhaw.ch)
