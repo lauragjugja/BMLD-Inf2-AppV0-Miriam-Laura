@@ -9,7 +9,6 @@ Diese App wurde von folgenden Personen entwickelt:
 - Laura Gjugja (gjugjlau@students.zhaw.ch)
 - Miriam Fenollosa Munoz (fenolmir@students.zhaw.ch)
 
-- Peter Meier (peme@zhaw.ch)
 
 Diese App ist das leere Gerüst für die App-Entwicklung im Modul Informatik 2 (BMLD/ZHAW)
 
