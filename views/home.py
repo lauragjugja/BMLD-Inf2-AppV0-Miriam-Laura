@@ -6,7 +6,7 @@ st.title("Meine erste Streamlit App")
 
 """
 Diese App wurde von folgenden Personen entwickelt:
-- Laura Gjugja students.zhaw.ch)
+- Laura Gjugja (gjugjlau.students.zhaw.ch)
 
 - Peter Meier (peme@zhaw.ch)
 
