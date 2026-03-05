@@ -7,6 +7,3 @@ pg_second = st.Page("views/quad_Formel_berechnen.py", title="Mitternachtsformel 
 
 pg = st.navigation([pg_home, pg_second])
 pg.run()
-
-st.title("Unterseite A")
-st.title("Mitternachtsformel Rechner")
