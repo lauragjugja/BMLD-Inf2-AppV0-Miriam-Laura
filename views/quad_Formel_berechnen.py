@@ -18,10 +18,14 @@ if submitted:
  # Every form must have a submit button.
 submitted = st.button("Submit")
 
-if input_string:
+input_string = st.text_input("Quadratische Formel eingeben")
+
+if st.button("Submit"):
     quadratische_Formel = parse_quadratic(input_string)
     result = Mitternachtsformel(quadratische_Formel)
     st.write("Das Ergebnis ist:", result)
+    input_string = st.text_input("Quadratische Formel eingeben")
+
 
 # --- NEW CODE to display the history table ---
 if "data_df" in st.session_state:
