@@ -13,6 +13,9 @@ if input_string:
     result = Mitternachtsformel(quadratische_Formel)
     st.write("Das Ergebnis ist:", result)
 
+ # Every form must have a submit button.
+    submitted = st.form_submit_button("Submit")
+
 # --- CODE UPDATE: save data to data manager ---
     data_manager = DataManager()
     data_manager.save_user_data(st.session_state['data_df'], 'data.csv')
