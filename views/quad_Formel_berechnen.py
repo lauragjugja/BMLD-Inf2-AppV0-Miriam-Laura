@@ -1,4 +1,5 @@
 import streamlit as st
+from utils.data_manager import DataManager  # --- NEW CODE: import data manager ---
 from functions.Mitternachtsformel import Mitternachtsformel, parse_quadratic
 st.title("Mitternachtsformel berechnen")
 
@@ -26,6 +27,10 @@ if st.button("Submit"):
     st.write("Das Ergebnis ist:", result)
     input_string = st.text_input("Quadratische Formel eingeben")
 
+# --- CODE UPDATE: save data to data manager ---
+    data_manager = DataManager()
+    data_manager.save_user_data(st.session_state['data_df'], 'data.csv')
+    # --- END OF CODE UPDATE ---
 
 # --- NEW CODE to display the history table ---
 if "data_df" in st.session_state:
