@@ -13,6 +13,11 @@ if input_string:
     result = Mitternachtsformel(quadratische_Formel)
     st.write("Das Ergebnis ist:", result)
 
+# --- CODE UPDATE: save data to data manager ---
+    data_manager = DataManager()
+    data_manager.save_user_data(st.session_state['data_df'], 'data.csv')
+# --- END OF CODE UPDATE ---
+
 # --- NEW CODE to display the history table ---
 if "data_df" in st.session_state:
     st.dataframe(st.session_state['data_df'])
