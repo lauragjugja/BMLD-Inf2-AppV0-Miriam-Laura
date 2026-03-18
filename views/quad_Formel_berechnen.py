@@ -16,20 +16,13 @@ if submitted:
     x1, x2, text = Mitternachtsformel(quadratische_Formel)
 
     st.write(x1, x2)
- # Every form must have a submit button.
-submitted = st.button("Submit")
 
 input_string = st.text_input("Quadratische Formel eingeben")
 
-if st.button("Submit"):
-    quadratische_Formel = parse_quadratic(input_string)
-    result = Mitternachtsformel(quadratische_Formel)
-    st.write("Das Ergebnis ist:", result)
-    input_string = st.text_input("Quadratische Formel eingeben")
 
 # --- CODE UPDATE: save data to data manager ---
-    data_manager = DataManager()
-    data_manager.save_user_data(st.session_state['data_df'], 'data.csv')
+data_manager = DataManager()
+data_manager.save_user_data(st.session_state['data_df'], 'data.csv')
     # --- END OF CODE UPDATE ---
 
 # --- NEW CODE to display the history table ---
