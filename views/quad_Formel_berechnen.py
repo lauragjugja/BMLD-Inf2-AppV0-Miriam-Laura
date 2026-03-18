@@ -16,11 +16,45 @@ if input_string:
  # Every form must have a submit button.
     submitted = st.form_submit_button("Submit")
 
-# --- CODE UPDATE: save data to data manager ---
-    data_manager = DataManager()
-    data_manager.save_user_data(st.session_state['data_df'], 'data.csv')
-# --- END OF CODE UPDATE ---
+import csv
+
+class DataManager:
+    """Einfacher DataManager zum Speichern von DataFrame / Liste/Dict als CSV."""
+
+    def save_user_data(self, data, filename='data.csv'):
+        try:
+            import pandas as pd
+        except Exception:
+            pd = None
+
+        # pandas.DataFrame -> to_csv
+        if pd is not None and hasattr(data, "to_csv"):
+            data.to_csv(filename, index=False)
+            return
+
+        # Liste von Dicts
+        if isinstance(data, list) and data and isinstance(data[0], dict):
+            keys = data[0].keys()
+            with open(filename, 'w', newline='', encoding='utf-8') as f:
+                writer = csv.DictWriter(f, keys)
+                writer.writeheader()
+                writer.writerows(data)
+            return
+
+        # Einzelnes Dict
+        if isinstance(data, dict):
+            keys = data.keys()
+            with open(filename, 'w', newline='', encoding='utf-8') as f:
+                writer = csv.DictWriter(f, keys)
+                writer.writeheader()
+                writer.writerow(data)
+            return
+
+        # Fallback: String schreiben
+        with open(filename, 'w', encoding='utf-8') as f:
+            f.write(str(data))
 
 # --- NEW CODE to display the history table ---
 if "data_df" in st.session_state:
     st.dataframe(st.session_state['data_df'])
+# ...existing code...
