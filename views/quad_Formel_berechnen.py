@@ -16,32 +16,12 @@ if submitted:
 
     st.write(x1, x2)
  # Every form must have a submit button.
-submitted = st.form_submit_button("Submit")
+submitted = st.button("Submit")
 
 if input_string:
     quadratische_Formel = parse_quadratic(input_string)
     result = Mitternachtsformel(quadratische_Formel)
     st.write("Das Ergebnis ist:", result)
-
-import csv
-
-class DataManager:
-        """Fallback DataManager, wenn Import nicht funktioniert."""
-
-        def __init__(self):
-            pass
-
-        def save(self, data, filename="data.csv"):
-            with open(filename, mode="w", newline="") as file:
-                writer = csv.writer(file)
-
-                if isinstance(data, dict):
-                    writer.writerow(data.keys())
-                    writer.writerow(data.values())
-
-                elif isinstance(data, list):
-                    for row in data:
-                        writer.writerow(row)
 
 # --- NEW CODE to display the history table ---
 if "data_df" in st.session_state:
