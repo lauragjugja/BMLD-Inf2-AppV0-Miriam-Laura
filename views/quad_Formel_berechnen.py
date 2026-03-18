@@ -8,13 +8,13 @@ st.write("Hier kannst du die Mitternachtsformel anwenden, um die Lösungen einer
 
 input_string = st.text_input("Gib die quadratische Gleichung ein (z.B. 2x^2 + 3x - 5):")
 
+ # Every form must have a submit button.
+submitted = st.form_submit_button("Submit")
+
 if input_string:
     quadratische_Formel = parse_quadratic(input_string)
     result = Mitternachtsformel(quadratische_Formel)
     st.write("Das Ergebnis ist:", result)
-
- # Every form must have a submit button.
-    submitted = st.form_submit_button("Submit")
 
 import csv
 
