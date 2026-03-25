@@ -1,7 +1,5 @@
-import pandas as pd  # --- NEW CODE: add pandas to the imports ---
+import pandas as pd 
 import streamlit as st
-
-st.set_page_config(page_title="Meine App", page_icon=":material/home:")
 
 # --- NEW CODE: import and initialize data manager and login manager ---
 from utils.data_manager import DataManager
@@ -24,11 +22,7 @@ if 'data_df' not in st.session_state:
     )
 # --- END OF CODE UPDATE ---
 
-
-# --- NEW CODE: initialize empty data frame if not already present ---
-if 'data_df' not in st.session_state:
-    st.session_state['data_df'] = pd.DataFrame()
-# --- END OF NEW CODE ---
+st.set_page_config(page_title="BMI Rechner", page_icon=":material/monitor_weight:")
 
 pg_home = st.Page("views/home.py", title="Home", icon=":material/home:", default=True)
 pg_second = st.Page("views/quad_Formel_berechnen.py", title="Mitternachtsformel Rechner", icon=":material/info:")

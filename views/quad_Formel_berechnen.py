@@ -1,3 +1,4 @@
+import pandas as pd
 import streamlit as st
 from utils.data_manager import DataManager  # --- NEW CODE: import data manager ---
 from functions.Mitternachtsformel import Mitternachtsformel, parse_quadratic
@@ -17,15 +18,9 @@ if submitted:
 
     st.write(x1, x2)
 
-input_string = st.text_input("Quadratische Formel eingeben")
 
-
-# --- CODE UPDATE: save data to data manager ---
-data_manager = DataManager()
-data_manager.save_user_data(st.session_state['data_df'], 'data.csv')
-    # --- END OF CODE UPDATE ---
-
+# --- NEW CODE to update history in session state and display it ---
+    st.session_state['data_df'] = pd.concat([st.session_state['data_df'], pd.DataFrame([result])])
+        
 # --- NEW CODE to display the history table ---
-if "data_df" in st.session_state:
-    st.dataframe(st.session_state['data_df'])
-# ...existing code...
+st.dataframe(st.session_state['data_df'])
