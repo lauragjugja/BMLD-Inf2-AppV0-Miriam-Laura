@@ -1,5 +1,6 @@
 import pandas as pd
 import streamlit as st
+st.set_option('client.showErrorDetails', True)
 import numpy as np
 import matplotlib.pyplot as plt
 from utils.data_manager import DataManager  # --- NEW CODE: import data manager ---
