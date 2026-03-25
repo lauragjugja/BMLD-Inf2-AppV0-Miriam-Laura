@@ -31,7 +31,7 @@ if submitted:
     # --- END OF CODE UPDATE ---
 
  # --- NEW CODE: plot quadratic function with zeros ---
-    st.subheader("Grafische Darstellung")
+    st.subheader("Grafische Darstellung deiner neusten Eingabe")
     
     a, b, c = quadratische_Formel
     
@@ -69,11 +69,5 @@ if submitted:
 
 # --- NEW CODE to display the history table ---
 if "data_df" in st.session_state and not st.session_state['data_df'].empty:
+    st.subheader("Berechnungsverlauf")
     st.dataframe(st.session_state['data_df'])
-# ...existing code...
-
-# --- NEW CODE to update history in session state and display it ---
-    # st.session_state['data_df'] = pd.concat([st.session_state['data_df'], pd.DataFrame([result])])
-        
-# --- NEW CODE to display the history table ---
-st.dataframe(st.session_state['data_df'])
