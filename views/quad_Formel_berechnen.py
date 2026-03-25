@@ -2,8 +2,13 @@ import pandas as pd
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
+
 from utils.data_manager import DataManager  # --- NEW CODE: import data manager ---
 from functions.Mitternachtsformel import Mitternachtsformel, parse_quadratic
+
+if "data_df" not in st.session_state:
+    st.session_state["data_df"] = pd.DataFrame(columns=["formel", "x1", "x2", "beschreibung"])
+
 st.title("Mitternachtsformel berechnen")
 
 st.write("Die Mitternachtsformel, auch bekannt als die quadratische Lösungsformel, ist eine Methode zur Berechnung der Lösungen einer quadratischen Gleichung der Form ax^2 + bx + c = 0. Die Formel lautet: x = (-b ± √(b^2 - 4ac)) / (2a).")
