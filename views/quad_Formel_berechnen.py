@@ -2,6 +2,7 @@ import pandas as pd
 import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
+from datetime import datetime
 from utils.data_manager import DataManager  # --- NEW CODE: import data manager ---
 from functions.Mitternachtsformel import Mitternachtsformel, parse_quadratic
 st.title("Mitternachtsformel berechnen")
@@ -22,10 +23,11 @@ if submitted:
  
   # --- CODE UPDATE: create result dict and update history ---
     result = {
-        "formel": input_string,
+        "Zeitstempel": datetime.now().strftime("%d.%m.%Y %H:%M:%S"),
+        "Formel": input_string,
         "x1": x1,
         "x2": x2,
-        "beschreibung": text
+        "Beschreibung": text
     }
     st.session_state['data_df'] = pd.concat([st.session_state['data_df'], pd.DataFrame([result])], ignore_index=True)
     data_manager = DataManager()
