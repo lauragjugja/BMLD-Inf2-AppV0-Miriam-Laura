@@ -23,11 +23,11 @@ if submitted:
  
   # --- CODE UPDATE: create result dict and update history ---
     result = {
-        "Zeitstempel": datetime.now().strftime("%d.%m.%Y %H:%M:%S"),
-        "Formel": input_string,
+        "zeitstempel": datetime.now().strftime("%d.%m.%Y %H:%M:%S"),
+        "formel": input_string,
         "x1": x1,
         "x2": x2,
-        "Beschreibung": text
+        "beschreibung": text
     }
     st.session_state['data_df'] = pd.concat([st.session_state['data_df'], pd.DataFrame([result])], ignore_index=True)
     data_manager = DataManager()
