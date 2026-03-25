@@ -28,6 +28,9 @@ if submitted:
         "beschreibung": text
     }
     st.session_state['data_df'] = pd.concat([st.session_state['data_df'], pd.DataFrame([result])], ignore_index=True)
+    data_manager = DataManager()
+    data_manager.save_user_data(st.session_state['data_df'], 'data.csv')  # save updated history to switch drive
+    
     # --- END OF CODE UPDATE ---
  
 # --- NEW CODE: plot quadratic function with zeros ---
