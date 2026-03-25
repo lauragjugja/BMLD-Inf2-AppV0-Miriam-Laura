@@ -18,9 +18,23 @@ if submitted:
 
     st.write(x1, x2)
 
+  # --- CODE UPDATE: create result dict and update history ---
+    result = {
+        "formel": input_string,
+        "x1": x1,
+        "x2": x2,
+        "beschreibung": text
+    }
+    st.session_state['data_df'] = pd.concat([st.session_state['data_df'], pd.DataFrame([result])], ignore_index=True)
+    # --- END OF CODE UPDATE ---
+        
+# --- NEW CODE to display the history table ---
+if "data_df" in st.session_state and not st.session_state['data_df'].empty:
+    st.dataframe(st.session_state['data_df'])
+# ...existing code...
 
 # --- NEW CODE to update history in session state and display it ---
-    st.session_state['data_df'] = pd.concat([st.session_state['data_df'], pd.DataFrame([result])])
+    # st.session_state['data_df'] = pd.concat([st.session_state['data_df'], pd.DataFrame([result])])
         
 # --- NEW CODE to display the history table ---
 st.dataframe(st.session_state['data_df'])
