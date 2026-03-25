@@ -14,15 +14,26 @@ login_manager.login_register()             # stops if not logged in
 # --- END OF NEW CODE ---
 
 # --- CODE UPDATE: load user data from data manager if not already present in session state --
+# if 'data_df' not in st.session_state:
+    # st.session_state['data_df'] = data_manager.load_user_data(
+        # 'data.csv',                     # The file on switch drive where the data is stored
+        # initial_value=pd.DataFrame(),   # Initial value if the file does not exist
+        # parse_dates=['timestamp']       # Parse timestamp as datetime
+        # )
+# --- CODE UPDATE: load user data from data manager if not already present in session state --
 if 'data_df' not in st.session_state:
-    st.session_state['data_df'] = data_manager.load_user_data(
-        'data.csv',                     # The file on switch drive where the data is stored
-        initial_value=pd.DataFrame(),   # Initial value if the file does not exist
-        parse_dates=['timestamp']       # Parse timestamp as datetime
-    )
+    try:
+        st.session_state['data_df'] = data_manager.load_user_data(
+            'data.csv',
+            initial_value=pd.DataFrame(columns=['formel', 'x1', 'x2', 'beschreibung']),
+            parse_dates=['timestamp']
+        )
+    except Exception as e:
+        # Falls Fehler, leeren DataFrame verwenden
+        st.session_state['data_df'] = pd.DataFrame(columns=['formel', 'x1', 'x2', 'beschreibung'])
 # --- END OF CODE UPDATE ---
 
-st.set_page_config(page_title="BMI Rechner", page_icon=":material/monitor_weight:")
+st.set_page_config(page_title="Mitternachtsformel Rechner", page_icon=":material/monitor_weight:")
 
 pg_home = st.Page("views/home.py", title="Home", icon=":material/home:", default=True)
 pg_second = st.Page("views/quad_Formel_berechnen.py", title="Mitternachtsformel Rechner", icon=":material/info:")
