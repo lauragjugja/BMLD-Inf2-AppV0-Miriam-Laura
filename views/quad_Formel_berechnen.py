@@ -7,9 +7,9 @@ st.write("Die Mitternachtsformel, auch bekannt als die quadratische Lösungsform
 
 st.write("Hier kannst du die Mitternachtsformel anwenden, um die Lösungen einer quadratischen Gleichung zu berechnen.")
 
-input_string = st.text_input("Gib die quadratische Gleichung ein (z.B. 2x^2 + 3x - 5):")
-    
-submitted = st.form_submit_button("Berechnen")
+with st.form(key='my_form'): 
+    input_string = st.text_input("Gib die quadratische Gleichung ein (z.B. 2x^2 + 3x - 5):")
+    submitted = st.form_submit_button("Berechnen")
 
 if submitted:
     quadratische_Formel = parse_quadratic(input_string)
