@@ -75,5 +75,7 @@ if submitted:
 # --- NEW CODE to display the history table ---
 if "data_df" in st.session_state and not st.session_state['data_df'].empty:
     st.subheader("Berechnungsverlauf")
-    st.dataframe(st.session_state['data_df'])
+    display_df = st.session_state['data_df'][['zeitstempel', 'formel', 'x1', 'x2', 'beschreibung']]
+    st.dataframe(display_df)
+    # st.dataframe(st.session_state['data_df'])
  
